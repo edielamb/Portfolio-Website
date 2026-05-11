@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edie Lamb | Graphic Designer & Photographer</title>
+    <link rel="stylesheet" href="https://use.typekit.net/nyq5ycv.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <!-- Landing page hero section. -->
+      <section class="landing" aria-label="Edie Lamb portfolio landing page">
+        <div class="landing-stage">
+          <!-- Decorative background lines on landing page. -->
+          <div class="contact-lines landing-lines" aria-hidden="true">
+            <span class="line line-one"></span>
+            <span class="line line-two"></span>
+            <span class="line line-three"></span>
+            <span class="line line-four"></span>
+            <span class="line line-five"></span>
+          </div>
+
+          <!-- Shared site header/navigation on landing page. -->
+          <header class="site-header">
+            <a class="brand" href="#home" aria-label="Edie Lamb home"
+              >Edie Lamb</a
+            >
+            <nav class="site-nav" aria-label="Primary navigation">
+              <a href="#home">Home</a>
+              <a href="about.html">About</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+          </header>
+
+          <!-- Hero text on landing page. -->
+          <section class="hero" id="home">
+            <h1 class="hero-name" aria-label="Edie Lamb">
+              <span class="kern-e">E</span><span class="kern-d">d</span
+              ><span class="kern-i">i</span><span class="kern-e2">e</span
+              ><span class="kern-space" aria-hidden="true"> </span
+              ><span class="kern-l">L</span><span class="kern-a">a</span
+              ><span class="kern-m">m</span><span class="kern-b">b</span>
+            </h1>
+          </section>
+
+          <!-- Role, location, and scroll cue on landing page. -->
+          <section class="intro" aria-label="Introduction">
+            <div>
+              <p class="role">Graphic Designer<br />&amp; Photographer</p>
+              <p class="location">Toronto, Canada</p>
+            </div>
+            <a
+              class="scroll-cue"
+              href="#about"
+              aria-label="Scroll to portfolio preview"
+            >
+              <span class="scroll-line" aria-hidden="true"></span>
+              <span class="scroll-arrow" aria-hidden="true"></span>
+            </a>
+            <span aria-hidden="true"></span>
+          </section>
+        </div>
+      </section>
+
+      <!-- Portfolio heading band on home page. -->
+      <section
+        class="portfolio-preview"
+        id="about"
+        aria-label="Portfolio preview"
+      >
+        <h2 class="reveal-on-scroll">Portfolio—Graphic Design & Photography</h2>
+      </section>
+
+      <!-- Project grid and sticky portfolio menu on home page. -->
+      <section class="projects" id="projects" aria-label="Selected projects">
+        <div class="projects-stage">
+          <!-- Expandable project category menu on home page. -->
+          <details class="project-menu" aria-label="Project navigation" open>
+            <summary class="project-menu-toggle">Portfolio +</summary>
+            <div class="project-menu-content">
+              <details open>
+                <summary>Visual Design +</summary>
+                <ul>
+                  <li><a href="project1.html">Topographic Mapping</a></li>
+                  <li><a href="mixedmedia.html">Mixed Media</a></li>
+                  <!--
+                  <li><a href="#project-one">Motion Design</a></li>-->
+                </ul>
+              </details>
+
+              <details open>
+                <summary>Typography +</summary>
+                <ul>
+                  <li><a href="subversitype.html">Subversitype</a></li>
+                  <!--
+                  <li><a href="#project-two">Inscript</a></li> -->
+                </ul>
+              </details>
+
+              <details open>
+                <summary>Printed Matter +</summary>
+                <ul>
+                  <li>
+                    <a href="instructionmanual.html">Instruction Manual Book</a>
+                  </li>
+
+                  <!-- <li><a href="#project-one">Observations Book</a></li>-->
+                </ul>
+              </details>
+
+              <details open>
+                <summary>Photography +</summary>
+                <ul>
+                  <li><a href="#project-one">*Under Construction*</a></li>
+                  <!-- <li><a href="#project-two">Digital</a></li>-->
+                </ul>
+              </details>
+
+              <details open>
+                <summary>Installations +</summary>
+                <ul>
+                  <li><a href="rebirth.html">Rebirth</a></li>
+                </ul>
+              </details>
+            </div>
+          </details>
+
+          <!-- Two-column project thumbnail grid on home page. -->
+          <div class="project-grid">
+            <article class="project-card" id="project-one">
+              <a
+                class="project-thumb project-thumb-topographic"
+                href="project1.html"
+                aria-label="View Topographic Mapping"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Topographic Mapping</h3>
+                  <p>Environmental Design</p>
+                </div>
+                <time datetime="2025-11">Fall, 2025</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-two">
+              <a
+                class="project-thumb project-thumb-subversitype"
+                href="subversitype.html"
+                aria-label="View Subversitype"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>SUBVERSITYPE</h3>
+                  <p>Abstract Type Specimen</p>
+                </div>
+                <time datetime="2025-01">Winter, 2025</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-three">
+              <a
+                class="project-thumb project-thumb-mixed-media"
+                href="mixedmedia.html"
+                aria-label="View Mixed Media"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Independence Interview</h3>
+                  <p>Mixed Media Video</p>
+                </div>
+                <time datetime="2024">Fall, 2024.</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-four">
+              <a
+                class="project-thumb project-thumb-rebirth"
+                href="rebirth.html"
+                aria-label="View Rebirth"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Rebirth</h3>
+                  <p>Installation</p>
+                </div>
+                <time datetime="2026"> Spring, 2023</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-five">
+              <a
+                class="project-thumb project-thumb-instruction"
+                href="instructionmanual.html"
+                aria-label="View Instruction Manual"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Instruction Manual</h3>
+                  <p>Printed Matter</p>
+                </div>
+                <time datetime="2026">2026</time>
+              </div>
+            </article>
+<!--
+            <article class="project-card" id="project-six">
+              <a
+                class="project-thumb"
+                href="#"
+                aria-label="View Project Title"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Project Title</h3>
+                  <p>Project Type</p>
+                </div>
+                <time datetime="2026">2026</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-seven">
+              <a
+                class="project-thumb"
+                href="#"
+                aria-label="View Project Title"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Project Title</h3>
+                  <p>Project Type</p>
+                </div>
+                <time datetime="2026">2026</time>
+              </div>
+            </article>
+
+            <article class="project-card" id="project-eight">
+              <a
+                class="project-thumb"
+                href="#"
+                aria-label="View Project Title"
+              ></a>
+              <div class="project-info">
+                <div>
+                  <h3>Project Title</h3>
+                  <p>Project Type</p>
+                </div>
+                <time datetime="2026">2026</time>
+              </div>
+            </article>
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

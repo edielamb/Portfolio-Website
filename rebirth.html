@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebirth | Edie Lamb</title>
+    <link rel="stylesheet" href="https://use.typekit.net/nyq5ycv.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="project-page">
+      <!-- Shared site header/navigation on project page. -->
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Edie Lamb home"
+          >Edie Lamb</a
+        >
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <!-- Project template layout for Rebirth page. -->
+      <section class="project-detail" aria-label="Rebirth project">
+        <!-- Expandable project category menu on project page. -->
+        <details class="project-menu" aria-label="Project navigation" open>
+          <summary class="project-menu-toggle">Portfolio +</summary>
+          <div class="project-menu-content">
+            <details open>
+              <summary>Visual Design +</summary>
+              <ul>
+                <li><a href="project1.html">Topographic Mapping</a></li>
+                <li><a href="mixedmedia.html">Mixed Media</a></li>
+                <!--
+                  <li><a href="#project-one">Motion Design</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Typography +</summary>
+              <ul>
+                <li><a href="subversitype.html">Subversitype</a></li>
+                <!--
+                  <li><a href="#project-two">Inscript</a></li> -->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Printed Matter +</summary>
+              <ul>
+                <li>
+                  <a href="instructionmanual.html">Instruction Manual Book</a>
+                </li>
+
+                <!-- <li><a href="#project-one">Observations Book</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Photography +</summary>
+              <ul>
+                <li><a href="#project-one">*Under Construction*</a></li>
+                <!-- <li><a href="#project-two">Digital</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Installations +</summary>
+              <ul>
+                <li><a href="rebirth.html">Rebirth</a></li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <!-- Main image viewer and thumbnail carousel on project page. -->
+        <section class="project-viewer" aria-label="Project image viewer">
+          <div
+            class="project-main-image project-image project-image-rebirth-main"
+            data-project-main-image
+            role="img"
+            aria-label="Selected Rebirth project image"
+          ></div>
+
+          <div class="project-thumbnails" aria-label="Project thumbnails">
+            <button
+              class="project-thumbnail is-active project-image project-image-rebirth-main"
+              type="button"
+              data-image-class="project-image-rebirth-main"
+              aria-label="Show Rebirth main image"
+              aria-pressed="true"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-rebirth-trunk"
+              type="button"
+              data-image-class="project-image-rebirth-trunk"
+              aria-label="Show trunk image"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-rebirth-papers"
+              type="button"
+              data-image-class="project-image-rebirth-papers"
+              aria-label="Show papers image"
+              aria-pressed="false"
+            ></button>
+          </div>
+        </section>
+
+        <!-- Project title, description, and tools on project page. -->
+        <section class="project-copy" aria-labelledby="project-title">
+          <h1 id="project-title">Rebirth</h1>
+          <p class="project-subtitle">Sculpture Installation.<br />2023</p>
+
+          <p>
+            Rebirth is an installation made from a genuine oak stump, archived
+            newspapers, and wire. The sculpture is a commentary on the lifecycle
+            of natural materials under capitalism, deforestation, and
+            overconsumption. Trees and forests are being harvested for their
+            materials to fill the demand from consumers, yet most of these
+            resources go to waste. While newspapers were once one of the most
+            common uses of paper, the digital age has rendered them almost
+            obsolete. Rebirth serves to remind us how rapidly consumer demands
+            change, but the detrimental effects on the environment remain long
+            after our interest has faded.
+          </p>
+
+          <p>
+            The sculpture was made by sourcing a tree stump from a sustainable
+            wood supplier who repurposes unwanted cuts into furniture and more
+            desireable pieces. Wire was sculpted and attached to the stump to
+            form the skeleton, and newspapers were woven in to form the final
+            piece: a ghost of the trees that were used to create it. <br />
+            <br />
+            This installation was selected and displayed at the TDSB Creates
+            Annual Gallery in 2023.
+          </p>
+
+          <div class="project-tools">
+            <h2>Tools Used:</h2>
+            <ul>
+              <li>Oak Tree Stump</li>
+              <li>Chicken Wire, Fishing Wire</li>
+              <li>Newspaper</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- Previous/next project footer on project page. -->
+      <footer class="project-footer" aria-label="Project navigation">
+        <a href="mixedmedia.html" aria-label="Previous project"
+          >← Previous Project</a
+        >
+        <a href="project1.html" aria-label="Next project">Next Project →</a>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

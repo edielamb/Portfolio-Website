@@ -1,0 +1,1458 @@
+/* Local Satoshi font files used across all pages. */
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/Satoshi-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/Satoshi-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Global color, spacing, and responsive type variables. */
+:root {
+  --ink: #1f1d20;
+  --paper: #e9e4dc;
+  --muted: #c8c2ba;
+  --line: rgba(233, 228, 220, 0.55);
+  --stage-max: 1720px;
+  --page-pad-x: clamp(1.5rem, 2.65vw, 4.75rem);
+  --page-pad-y: clamp(1.25rem, 2.35vw, 3.5rem);
+  --hero-text: clamp(8rem, 32.5cqw, 32rem);
+  --role-text: clamp(2rem, 3.05cqw, 3.75rem);
+  --small-text: clamp(0.9rem, 1.24cqw, 1.45rem);
+  --header-text: var(--small-text);
+}
+
+/* Global reset and base page styling. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family:
+    "Satoshi", Avenir, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reveal animation states used on landing and scroll-reveal elements. */
+/* Hides shared header before page-load reveal animation. */
+.reveal-ready .site-header {
+  opacity: 0;
+  transform: translateY(0.8rem);
+  border-bottom-color: rgba(233, 228, 220, 0);
+}
+
+/* Reveals shared header after landing animation starts. */
+.reveal-ready.reveal-in .site-header {
+  opacity: 1;
+  transform: translateY(0);
+  border-bottom-color: var(--line);
+  transition:
+    opacity 850ms cubic-bezier(0.22, 1, 0.36, 1) 620ms,
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1) 620ms,
+    border-color 900ms cubic-bezier(0.22, 1, 0.36, 1) 620ms;
+}
+
+/* Hidden starting state for landing and scroll-reveal elements. */
+.reveal-ready .hero-name,
+.reveal-ready .role,
+.reveal-ready .location,
+.reveal-ready .scroll-cue,
+.reveal-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(1.15rem);
+  filter: blur(0.18rem);
+}
+
+/* Visible ending state for landing and scroll-reveal elements. */
+.reveal-ready.reveal-in .hero-name,
+.reveal-ready.reveal-in .role,
+.reveal-ready.reveal-in .location,
+.reveal-ready.reveal-in .scroll-cue,
+.reveal-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition:
+    opacity 850ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 850ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Timing for landing page hero name reveal. */
+.reveal-ready.reveal-in .hero-name {
+  transition-delay: 80ms;
+}
+
+/* Timing for landing page role reveal. */
+.reveal-ready.reveal-in .role {
+  transition-delay: 260ms;
+}
+
+/* Timing for landing page location reveal. */
+.reveal-ready.reveal-in .location {
+  transition-delay: 360ms;
+}
+
+/* Timing for landing page scroll cue reveal. */
+.reveal-ready.reveal-in .scroll-cue {
+  transition-delay: 460ms;
+}
+
+/* Per-element delay for scroll-reveal content. */
+.reveal-ready .reveal-on-scroll.is-visible {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Reduced-motion fallback for site animations. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .site-header,
+  .reveal-ready .hero-name,
+  .reveal-ready .role,
+  .reveal-ready .location,
+  .reveal-ready .scroll-cue,
+  .reveal-ready .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* Landing page wrapper and responsive stage. */
+/* Full-screen landing section on home page. */
+.landing {
+  position: relative;
+  display: grid;
+  place-items: stretch center;
+  min-height: 100vh;
+  padding: var(--page-pad-y) var(--page-pad-x);
+  overflow: hidden;
+}
+
+/* Centered responsive canvas inside landing page. */
+.landing-stage {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: min(100%, var(--stage-max));
+  min-height: calc(100vh - (var(--page-pad-y) * 2));
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+/* Decorative line layering on landing page. */
+/* Keeps landing content above decorative line background. */
+.landing-stage .site-header,
+.hero,
+.intro {
+  position: relative;
+  z-index: 1;
+}
+
+/* Opacity adjustment for decorative landing page lines. */
+.landing-lines {
+  opacity: 0.52;
+}
+
+/* Shared header/navigation styling across pages. */
+/* Shared top header on all pages. */
+.site-header {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(18rem, 36rem);
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--header-text);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Edie Lamb wordmark link in shared header. */
+.brand {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Primary navigation link group in shared header. */
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+/* Transition styling for header navigation links. */
+.site-nav a {
+  transition: color 180ms ease;
+}
+
+/* Hover and keyboard-focus states for header navigation links. */
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--paper);
+  outline: none;
+}
+
+/* Hero text on landing page. */
+/* Hero section layout on landing page. */
+.hero {
+  position: relative;
+  display: grid;
+  align-content: start;
+  padding-top: clamp(2.6rem, 4vw, 4.6rem);
+}
+
+/* Large Edie Lamb display type on landing page. */
+.hero-name {
+  margin: 0;
+  color: var(--paper);
+  font-family: "garamond-premier-pro-display", Georgia, serif;
+  font-size: var(--hero-text);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.78;
+  letter-spacing: 0;
+  white-space: nowrap;
+  margin-left: 0.06em;
+  transform: scaleX(1.06);
+  transform-origin: left center;
+}
+
+/* Manual kerning controls for landing page hero name. */
+/* Letter spans used for manual kerning on landing page hero name. */
+.hero-name span {
+  display: inline-block;
+  margin-right: -0.09em;
+}
+
+/* Custom spacing after the L in landing page hero name. */
+.hero-name .kern-l {
+  margin-right: -0.08em;
+}
+
+/* Removes trailing spacing after final b in landing page hero name. */
+.hero-name .kern-b {
+  margin-right: 0;
+}
+
+/* Custom word spacing between Edie and Lamb in landing page hero name. */
+.hero-name .kern-space {
+  width: 0.23em;
+}
+
+/* Role, location, and scroll cue on landing page. */
+/* Bottom intro row on landing page. */
+.intro {
+  align-self: end;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 1.5rem;
+  min-height: 24vh;
+}
+
+/* Graphic Designer and Photographer text on landing page. */
+.role {
+  margin: 0;
+  font-size: var(--role-text);
+  font-weight: 300;
+  line-height: 1.14;
+}
+
+/* Toronto location text on landing page. */
+.location {
+  margin: 2.3rem 0 0;
+  color: var(--muted);
+  font-size: var(--small-text);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Down-arrow scroll link on landing page. */
+.scroll-cue {
+  display: grid;
+  justify-items: center;
+  gap: 0.32rem;
+  color: var(--muted);
+  transform: translateY(0.4rem);
+}
+
+/* Restores scroll cue offset after reveal animation. */
+.reveal-ready.reveal-in .scroll-cue {
+  transform: translateY(0.4rem);
+}
+
+/* Vertical line in landing page scroll cue. */
+.scroll-line {
+  width: 1px;
+  height: clamp(2.2rem, 4vw, 3.5rem);
+  background: var(--line);
+}
+
+/* Arrow head in landing page scroll cue. */
+.scroll-arrow {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Portfolio heading band on home page. */
+/* Light portfolio heading section on home page. */
+.portfolio-preview {
+  min-height: 32vh;
+  padding: 6rem var(--page-pad-x);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Large portfolio heading text on home page. */
+.portfolio-preview h2 {
+  max-width: 58rem;
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 6rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+/* Project grid section and sticky menu on home page. */
+/* Home page projects section wrapper. */
+.projects {
+  display: grid;
+  place-items: stretch;
+  padding: clamp(3.6rem, 5.6vw, 6.5rem) var(--page-pad-x) clamp(5rem, 8vw, 9rem)
+    0;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Home page project section grid: menu plus project cards. */
+.projects-stage {
+  display: grid;
+  grid-template-columns: clamp(11.5rem, 12.5cqw, 13.75rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 3.2vw, 3.5rem);
+  width: 100%;
+  margin-left: 0;
+  container-type: inline-size;
+}
+
+/* Expandable portfolio menu used on home and project pages. */
+/* Sticky portfolio category menu on home and project pages. */
+.project-menu {
+  position: sticky;
+  top: var(--page-pad-y);
+  align-self: start;
+  min-height: 0;
+  margin-left: 0;
+  background: #8b867a;
+  color: var(--ink);
+  font-size: clamp(0.72rem, 0.9cqw, 0.92rem);
+  line-height: 1.25;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: background-color 180ms ease;
+  will-change: height;
+}
+
+/* Open state for portfolio category menu. */
+.project-menu[open] {
+  background: #8b867a;
+}
+
+/* Removes default margin from menu summaries and lists. */
+.project-menu summary,
+.project-menu ul {
+  margin: 0;
+}
+
+/* Clickable Portfolio + menu label. */
+.project-menu-toggle {
+  padding: clamp(0.75rem, 1.05cqw, 1.1rem) clamp(0.65rem, 1.1cqw, 1rem);
+  color: var(--ink);
+  font-size: clamp(1rem, 1.42cqw, 1.45rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Spacing below Portfolio + when menu is open. */
+.project-menu[open] .project-menu-toggle {
+  color: var(--ink);
+  margin-bottom: clamp(0.75rem, 1.15cqw, 1.05rem);
+}
+
+/* Inner content area for portfolio category menu. */
+.project-menu-content {
+  padding: 0 clamp(0.65rem, 1.1cqw, 1rem) clamp(0.75rem, 1.05cqw, 1.1rem);
+  transition:
+    opacity 160ms ease,
+    transform 180ms ease;
+}
+
+/* Hidden content state when portfolio menu is closed. */
+.project-menu:not([open]) .project-menu-content {
+  opacity: 0;
+  transform: translateY(-0.35rem);
+}
+
+/* Spacing between menu category groups. */
+.project-menu-content details + details {
+  margin-top: clamp(0.8rem, 1.25cqw, 1.15rem);
+}
+
+/* Clickable category labels inside portfolio menu. */
+.project-menu summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Removes browser default disclosure marker in portfolio menu. */
+.project-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Nested project links inside portfolio menu categories. */
+.project-menu ul {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.55rem 0 0 clamp(1rem, 1.2cqw, 1.25rem);
+  list-style: none;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+/* Individual project links inside portfolio menu. */
+.project-menu a {
+  font-style: italic;
+  transition: color 180ms ease;
+}
+
+/* Hover and keyboard-focus states for portfolio menu links. */
+.project-menu a:hover,
+.project-menu a:focus-visible {
+  color: var(--paper);
+  outline: none;
+}
+
+/* Two-column project thumbnail grid on home page. */
+/* Two-column layout for home page project cards. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 3.2cqw, 3.5rem);
+}
+
+/* Project card thumbnail and metadata on home page. */
+/* Single project card on home page. */
+.project-card {
+  display: grid;
+  gap: clamp(1.4rem, 2vw, 2rem);
+}
+
+/* Clickable project thumbnail on home page. */
+.project-thumb {
+  display: block;
+  aspect-ratio: 4 / 2.9;
+  width: 100%;
+  background-color: #050505;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+/* Topographic Mapping thumbnail image on home page. */
+.project-thumb-topographic {
+  background-image: url("images/TopoMappingBrochure.png");
+}
+
+/* Subversitype thumbnail image on home page. */
+.project-thumb-subversitype {
+  background-image: url("images/specimenmain.png");
+}
+
+/* Mixed Media thumbnail image on home page. */
+.project-thumb-mixed-media {
+  background-image: url("images/Mixedmediathumbnail.png");
+}
+
+/* Rebirth thumbnail image on home page. */
+.project-thumb-rebirth {
+  background-image: url("images/rebirthimage.jpg");
+  background-size: contain;
+}
+
+/* Instruction Manual thumbnail image on home page. */
+.project-thumb-instruction {
+  background-image: url("images/InstructionManual_Mockup3.png");
+}
+
+/* Hover and keyboard-focus outline for home page project thumbnails. */
+.project-thumb:hover,
+.project-thumb:focus-visible {
+  outline: 1px solid var(--line);
+  outline-offset: 0.35rem;
+}
+
+/* Project title/type/date row below home page thumbnails. */
+.project-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1.5rem;
+  color: var(--paper);
+}
+
+/* Removes default margins from project card title and type. */
+.project-info h3,
+.project-info p {
+  margin: 0;
+}
+
+/* Project title text on home page cards. */
+.project-info h3 {
+  font-size: clamp(1.8rem, 2.4cqw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Project type and date text on home page cards. */
+.project-info p,
+.project-info time {
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.42cqw, 1.7rem);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+/* Spacing above project type on home page cards. */
+.project-info p {
+  margin-top: 0.8rem;
+}
+
+/* Date alignment on home page project cards. */
+.project-info time {
+  justify-self: end;
+  padding-top: 0.32rem;
+  white-space: nowrap;
+}
+
+/* Full project page wrapper and header spacing. */
+/* Outer wrapper for full project pages. */
+.project-page {
+  min-height: 100vh;
+  padding: var(--page-pad-y) var(--page-pad-x) var(--page-pad-y);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Header spacing on full project pages. */
+.project-page > .site-header {
+  margin-bottom: clamp(2rem, 3vw, 3.2rem);
+}
+
+/* Three-column full project layout: menu, images, and text. */
+/* Full project page grid: menu, image viewer, and text column. */
+.project-detail {
+  display: grid;
+  grid-template-columns: clamp(11rem, 11.8vw, 13rem) minmax(30rem, 1fr) minmax(
+      18rem,
+      0.54fr
+    );
+  align-items: start;
+  gap: clamp(1.6rem, 2.6vw, 3rem);
+  margin-left: calc(var(--page-pad-x) * -1);
+}
+
+/* Main project image viewer on project pages. */
+/* Image viewer column on full project pages. */
+.project-viewer {
+  display: grid;
+  gap: clamp(1rem, 1.4vw, 1.4rem);
+}
+
+/* Large selected image frame on full project pages. */
+.project-main-image {
+  min-height: clamp(24rem, 35vw, 36rem);
+  background-color: #363635;
+}
+
+/* Embedded video frame on video-based project pages. */
+.project-video-frame {
+  aspect-ratio: 16 / 9;
+  background: #050505;
+  border: 1px solid rgba(233, 228, 220, 0.06);
+}
+
+/* YouTube iframe inside project video frame. */
+.project-video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Video thumbnail button on video-based project pages. */
+.project-video-thumb {
+  position: relative;
+  background: #050505;
+  border: 1px solid rgba(233, 228, 220, 0.2);
+}
+
+.project-video-thumb::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-bottom: 0.7rem solid transparent;
+  border-left: 1.05rem solid var(--paper);
+  border-top: 0.7rem solid transparent;
+  transform: translate(-38%, -50%);
+}
+
+/* Placeholder image frame for future project pages. */
+.placeholder-image {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(233, 228, 220, 0.06);
+  background-color: #050505;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    outline-color 180ms ease;
+}
+
+/* Real project image classes used by project page galleries. */
+/* Shared background-image styling for real project images. */
+.project-image {
+  background-color: #111;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid rgba(233, 228, 220, 0.06);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    outline-color 180ms ease;
+}
+
+/* Main Topographic Mapping image on project1 page. */
+.project-image-main {
+  background-image: url("images/TopoMappingBrochure.png");
+}
+
+/* First Topographic Mapping sketch image on project1 page. */
+.project-image-sketch-one {
+  background-image: url("images/MAPSketches-03.jpg");
+}
+
+/* Second Topographic Mapping sketch image on project1 page. */
+.project-image-sketch-two {
+  background-image: url("images/MAPSketches-02.jpg");
+}
+
+/* Third Topographic Mapping sketch image on project1 page. */
+.project-image-sketch-three {
+  background-image: url("images/MAPSketches-04.jpg");
+}
+
+/* Topographic Mapping gallery image on project1 page. */
+.project-image-gallery {
+  background-image: url("images/tmgallery.JPG");
+}
+
+/* Subversitype mockup image on subversitype page. */
+.project-image-sub-main {
+  background-image: url("images/submockup.png");
+}
+
+/* Subversitype cover image on subversitype page. */
+.project-image-sub-cover {
+  background-image: url("images/subcover.png");
+}
+
+/* First Subversitype card image on subversitype page. */
+.project-image-card-one {
+  background-image: url("images/card1.png");
+}
+
+/* Second Subversitype card image on subversitype page. */
+.project-image-card-two {
+  background-image: url("images/cards-02.png");
+}
+
+/* Third Subversitype card image on subversitype page. */
+.project-image-card-three {
+  background-image: url("images/cards-03.png");
+}
+
+/* Main Subversitype specimen image on subversitype page. */
+.project-image-specimen-main {
+  background-image: url("images/specimenmain.png");
+}
+
+/* Subversitype specimen page 1 image. */
+.project-image-specimen-1 {
+  background-image: url("images/SpecimenPage1.png");
+}
+
+/* Subversitype specimen page 2 image. */
+.project-image-specimen-2 {
+  background-image: url("images/SpecimenPage2.png");
+}
+
+/* Subversitype specimen page 3 image. */
+.project-image-specimen-3 {
+  background-image: url("images/SpecimenPage3.png");
+}
+
+/* Subversitype specimen page 4 image. */
+.project-image-specimen-4 {
+  background-image: url("images/SpecimenPage4.png");
+}
+
+/* Subversitype specimen page 5 image. */
+.project-image-specimen-5 {
+  background-image: url("images/SpecimenPage5.png");
+}
+
+/* Subversitype specimen page 6 image. */
+.project-image-specimen-6 {
+  background-image: url("images/SpecimenPage6.png");
+}
+
+/* Subversitype specimen page 7 image. */
+.project-image-specimen-7 {
+  background-image: url("images/SpecimenPage7.png");
+}
+
+/* Subversitype specimen page 8 image. */
+.project-image-specimen-8 {
+  background-image: url("images/SpecimenPage8.png");
+}
+
+/* Mixed Media video book cover image. */
+.project-image-video-cover {
+  background-image: url("images/videobookcover.png");
+}
+
+/* Mixed Media video book page 1 image. */
+.project-image-video-page-one {
+  background-image: url("images/videobookpage1.png");
+}
+
+/* Mixed Media video book page 2 image. */
+.project-image-video-page-two {
+  background-image: url("images/videobook page2.png");
+}
+
+/* Mixed Media demo page image. */
+.project-image-demo-page {
+  background-image: url("images/DemoPage.jpeg");
+}
+
+/* Main Rebirth image on rebirth page. */
+.project-image-rebirth-main {
+  background-image: url("images/rebirthimage.jpg");
+}
+
+/* Rebirth trunk image on rebirth page. */
+.project-image-rebirth-trunk {
+  background-image: url("images/trunk.jpg");
+}
+
+/* Rebirth papers image on rebirth page. */
+.project-image-rebirth-papers {
+  background-image: url("images/papers.jpg");
+}
+
+/* Vertical Rebirth images keep their full height inside the existing frame. */
+.project-image-rebirth-main,
+.project-image-rebirth-trunk {
+  background-size: contain;
+}
+
+/* Instruction Manual images on instructionmanual page. */
+.project-image-instruction-1 { background-image: url("images/InstructionManual_Mockup1.png"); }
+.project-image-instruction-2 { background-image: url("images/InstructionManual_Mockup2.png"); }
+.project-image-instruction-3 { background-image: url("images/InstructionManual_Mockup3.png"); }
+.project-image-instruction-4 { background-image: url("images/InstructionManual_Mockup4.png"); }
+.project-image-instruction-5 { background-image: url("images/InstructionManual_Mockup5.png"); }
+.project-image-instruction-6 { background-image: url("images/InstructionManual_Mockup6.png"); }
+.project-image-instruction-7 { background-image: url("images/InstructionManual_Mockup7.png"); }
+.project-image-instruction-8 { background-image: url("images/InstructionManual_Mockup8.png"); }
+.project-image-instruction-9 { background-image: url("images/InstructionManual_Mockup9.png"); }
+.project-image-instruction-10 { background-image: url("images/InstructionManual_Mockup10.png"); }
+.project-image-instruction-11 { background-image: url("images/InstructionManual_Mockup11.png"); }
+.project-image-instruction-12 { background-image: url("images/InstructionManual_Mockup12.png"); }
+.project-image-instruction-13 { background-image: url("images/InstructionManual_Mockup13.png"); }
+.project-image-instruction-14 { background-image: url("images/InstructionManual_Mockup14.png"); }
+.project-image-instruction-15 { background-image: url("images/InstructionManual_Mockup15.png"); }
+.project-image-downscaling { background-image: url("images/downscaling.jpg"); }
+.project-image-overlayed { background-image: url("images/overlayed.jpg"); }
+
+/* CSS placeholder image styles kept for future empty project slots. */
+/* Base pseudo-elements that draw abstract placeholder images. */
+.placeholder-image::before,
+.placeholder-image::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  opacity: 0.78;
+}
+
+/* Main abstract pattern for placeholder images. */
+.placeholder-image::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233, 228, 220, 0.85) 0 48%,
+      transparent 48% 52%,
+      rgba(233, 228, 220, 0.25) 52%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.4rem,
+      rgba(31, 29, 32, 0.18) 1.4rem 1.5rem
+    );
+}
+
+/* Overlay grid texture for placeholder images. */
+.placeholder-image::after {
+  inset: 12%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(31, 29, 32, 0.45) 0 0.08rem,
+      transparent 0.08rem 1.05rem
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(31, 29, 32, 0.25) 0 0.08rem,
+      transparent 0.08rem 1.05rem
+    );
+  mix-blend-mode: multiply;
+}
+
+/* Alternate placeholder pattern two. */
+.placeholder-two::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233, 228, 220, 0.88),
+      rgba(233, 228, 220, 0.72)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 2rem,
+      rgba(31, 29, 32, 0.25) 2rem 2.12rem
+    );
+}
+
+/* Alternate placeholder pattern three. */
+.placeholder-three::before {
+  background:
+    radial-gradient(
+      circle at 30% 32%,
+      rgba(233, 228, 220, 0.85),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 70% 58%,
+      rgba(233, 228, 220, 0.65),
+      transparent 22%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(233, 228, 220, 0.18),
+      rgba(233, 228, 220, 0.78)
+    );
+}
+
+/* Alternate placeholder pattern four. */
+.placeholder-four::before {
+  background:
+    linear-gradient(90deg, rgba(233, 228, 220, 0.82) 0 45%, #151316 45% 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1rem,
+      rgba(233, 228, 220, 0.24) 1rem 1.08rem
+    );
+}
+
+/* Alternate placeholder pattern five. */
+.placeholder-five::before {
+  background:
+    linear-gradient(90deg, #2f2f2d 0 50%, #4a4a47 50%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(233, 228, 220, 0.32) 0 0.12rem,
+      transparent 0.12rem 1.25rem
+    );
+}
+
+/* Horizontal thumbnail carousel on project pages. */
+/* Scrollable thumbnail row below main project image. */
+.project-thumbnails {
+  display: flex;
+  gap: clamp(0.65rem, 1vw, 1rem);
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.35rem 0.35rem 0.5rem;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scrollbar-color: rgba(233, 228, 220, 0.55) transparent;
+  scrollbar-width: thin;
+}
+
+/* WebKit scrollbar size for project thumbnail carousel. */
+.project-thumbnails::-webkit-scrollbar {
+  height: 0.32rem;
+}
+
+/* Transparent track for project thumbnail carousel scrollbar. */
+.project-thumbnails::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar thumb for project thumbnail carousel. */
+.project-thumbnails::-webkit-scrollbar-thumb {
+  background: rgba(233, 228, 220, 0.55);
+  border-radius: 999px;
+}
+
+/* Hover state for project thumbnail carousel scrollbar. */
+.project-thumbnails::-webkit-scrollbar-thumb:hover {
+  background: rgba(233, 228, 220, 0.78);
+}
+
+/* Individual thumbnail button inside project carousel. */
+.project-thumbnail {
+  display: block;
+  flex: 0 0 clamp(5.2rem, 8.2vw, 8rem);
+  aspect-ratio: 1.5 / 0.95;
+  padding: 0;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+/* Hover and keyboard-focus outline for project carousel thumbnails. */
+.project-thumbnail:hover,
+.project-thumbnail:focus-visible {
+  outline: 1px solid var(--line);
+  outline-offset: 0.25rem;
+}
+
+/* Active selected thumbnail in project carousel. */
+.project-thumbnail.is-active {
+  outline: 1px solid var(--paper);
+  outline-offset: 0.25rem;
+}
+
+/* Project text column on full project pages. */
+/* Right-side text column on full project pages. */
+.project-copy {
+  display: grid;
+  align-content: start;
+  gap: clamp(1rem, 1.55vw, 1.55rem);
+  padding-top: 0;
+  max-width: 30rem;
+}
+
+/* Removes default margins from project text elements. */
+.project-copy h1,
+.project-copy h2,
+.project-copy p,
+.project-copy ul {
+  margin: 0;
+}
+
+/* Project title text on full project pages. */
+.project-copy h1 {
+  color: var(--paper);
+  font-size: clamp(1.8rem, 2.6vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Italic project subtitle/date on full project pages. */
+.project-subtitle {
+  color: var(--paper);
+  font-size: clamp(1rem, 1.15vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.28;
+}
+
+/* Body copy and tools text on full project pages. */
+.project-copy p:not(.project-subtitle),
+.project-tools {
+  color: var(--muted);
+  font-size: clamp(0.82rem, 0.92vw, 1rem);
+  line-height: 1.32;
+}
+
+/* Tools section spacing on full project pages. */
+.project-tools {
+  padding-top: clamp(0.7rem, 1.2vw, 1.2rem);
+}
+
+/* Tools Used heading on full project pages. */
+.project-tools h2 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/* Tools list on full project pages. */
+.project-tools ul {
+  padding: 0 0 0 1.5rem;
+  font-style: italic;
+  list-style: none;
+}
+
+/* Previous/next footer on full project pages. */
+/* Previous/next navigation footer on full project pages. */
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: clamp(2.5rem, 2vw, 5.5rem);
+  padding-top: 1.5rem;
+  color: var(--muted);
+  font-size: var(--header-text);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Previous/next footer links on full project pages. */
+.project-footer a {
+  transition: color 180ms ease;
+}
+
+/* Hover and keyboard-focus states for project footer links. */
+.project-footer a:hover,
+.project-footer a:focus-visible {
+  color: var(--paper);
+  outline: none;
+}
+
+/* Contact page layout wrapper. */
+/* Full-screen contact page wrapper. */
+.contact-page {
+  position: relative;
+  display: grid;
+  place-items: stretch center;
+  min-height: 100vh;
+  padding: var(--page-pad-y) var(--page-pad-x);
+  overflow: hidden;
+  background: var(--ink);
+}
+
+/* Centered responsive canvas on contact page. */
+.contact-stage {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: min(100%, var(--stage-max));
+  min-height: calc(100vh - (var(--page-pad-y) * 2));
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+/* Decorative angled lines on contact and landing pages. */
+/* Absolute container for decorative angled background lines. */
+.contact-lines {
+  position: absolute;
+  inset: 0 calc(var(--page-pad-x) * -1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keeps contact page text above decorative line background. */
+.contact-stage .site-header,
+.contact-hero,
+.contact-details {
+  position: relative;
+  z-index: 1;
+}
+
+/* Base decorative angled line style. */
+.line {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 180vw;
+  height: 1px;
+  background: rgba(233, 228, 220, 0.3);
+  transform-origin: center;
+}
+
+/* Decorative line angle one. */
+.line-one {
+  transform: translate(-50%, -50%) rotate(8.5deg);
+}
+
+/* Decorative line angle two. */
+.line-two {
+  background: rgba(233, 228, 220, 0.18);
+  transform: translate(-58%, 34%) rotate(25deg);
+}
+
+/* Decorative line angle three. */
+.line-three {
+  width: 115vh;
+  background: rgba(233, 228, 220, 0.2);
+  transform: translate(-8%, -5%) rotate(83deg);
+}
+
+/* Decorative line angle four. */
+.line-four {
+  width: 130vh;
+  background: rgba(233, 228, 220, 0.24);
+  transform: translate(22%, -24%) rotate(61deg);
+}
+
+/* Decorative line angle five. */
+.line-five {
+  width: 120vh;
+  background: rgba(233, 228, 220, 0.18);
+  transform: translate(48%, -22%) rotate(96deg);
+}
+
+/* Contact page title, location, and social links. */
+/* Contact page upper layout for title and meta text. */
+.contact-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 34rem);
+  align-items: start;
+  gap: 3rem;
+  padding-top: clamp(2rem, 3.2cqw, 3.4rem);
+}
+
+/* Large Contact title on contact page. */
+.contact-title {
+  margin: 0;
+  color: var(--paper);
+  font-family: "garamond-premier-pro-display", Georgia, serif;
+  font-size: clamp(8.5rem, 27cqw, 27rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.72;
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+}
+
+/* Location and social link group on contact page. */
+.contact-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 7cqw, 8rem);
+  padding-top: clamp(2.2rem, 5.3cqw, 5.6rem);
+  color: var(--paper);
+  font-size: var(--small-text);
+  line-height: 1.16;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* Removes default margins from contact meta text/list. */
+.contact-meta p,
+.contact-meta ul {
+  margin: 0;
+}
+
+/* Italic ON text in contact location. */
+.contact-meta em {
+  font-style: italic;
+}
+
+/* Social link list reset on contact page. */
+.contact-meta ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Social link transitions on contact page. */
+.contact-meta a {
+  transition: color 180ms ease;
+}
+
+/* Hover and keyboard-focus states for contact social links. */
+.contact-meta a:hover,
+.contact-meta a:focus-visible {
+  color: var(--muted);
+  outline: none;
+}
+
+/* Contact page email and phone links. */
+/* Contact email and phone stack on contact page. */
+.contact-details {
+  display: grid;
+  align-self: end;
+  gap: clamp(2.2rem, 4cqw, 4rem);
+  max-width: 76rem;
+  padding-bottom: clamp(1rem, 1.8cqw, 2rem);
+  color: var(--paper);
+  font-size: clamp(2rem, 2.9cqw, 3.125rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Individual contact detail links on contact page. */
+.contact-details a {
+  width: max-content;
+  max-width: 100%;
+  transition: color 180ms ease;
+}
+
+/* Hover and keyboard-focus states for contact detail links. */
+.contact-details a:hover,
+.contact-details a:focus-visible {
+  color: var(--muted);
+  outline: none;
+}
+
+/* Large desktop adjustments. */
+@media (min-width: 1800px) {
+  :root {
+    --stage-max: 1780px;
+    --page-pad-x: clamp(4.75rem, 5vw, 7rem);
+  }
+}
+
+/* Tablet layout adjustments. */
+@media (max-width: 1100px) {
+  :root {
+    --hero-text: clamp(7rem, 31cqw, 20rem);
+    --role-text: clamp(1.85rem, 3.4cqw, 3rem);
+  }
+
+  /* Tablet spacing for landing page intro. */
+  .intro {
+    min-height: 28vh;
+  }
+
+  /* Tablet layout for project menu and grid. */
+  .projects-stage {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  /* Tablet portfolio menu height adjustment. */
+  .project-menu {
+    min-height: auto;
+  }
+
+  /* Tablet single-column layout for full project pages. */
+  .project-detail {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  /* Tablet ordering for project image viewer. */
+  .project-viewer {
+    order: 2;
+  }
+
+  /* Tablet ordering and width for project text. */
+  .project-copy {
+    order: 3;
+    max-width: 48rem;
+    padding-top: 0;
+  }
+}
+
+/* Mobile layout adjustments. */
+@media (max-width: 760px) {
+  :root {
+    --page-pad-x: 1.25rem;
+    --page-pad-y: 1.25rem;
+    --hero-text: clamp(5.1rem, 35cqw, 11rem);
+    --role-text: clamp(2rem, 8vw, 3rem);
+    --small-text: clamp(0.9rem, 3.7vw, 1.05rem);
+    --header-text: var(--small-text);
+  }
+
+  /* Mobile landing page wrapper spacing. */
+  .landing {
+    padding: var(--page-pad-y) var(--page-pad-x);
+  }
+
+  /* Mobile landing page stage height. */
+  .landing-stage {
+    min-height: calc(100vh - (var(--page-pad-y) * 2));
+  }
+
+  /* Mobile shared header layout. */
+  .site-header {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Mobile header navigation layout. */
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  /* Mobile landing hero spacing. */
+  .hero {
+    padding-top: 3.5rem;
+  }
+
+  /* Mobile landing hero text wrapping. */
+  .hero-name {
+    max-width: 100%;
+    line-height: 0.83;
+    white-space: normal;
+    transform: none;
+  }
+
+  /* Mobile landing intro layout. */
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: 30vh;
+  }
+
+  /* Mobile scroll cue alignment. */
+  .scroll-cue {
+    justify-self: center;
+  }
+
+  /* Mobile project section spacing. */
+  .projects {
+    padding: 3.5rem var(--page-pad-x) 5rem;
+  }
+
+  /* Mobile project section grid. */
+  .projects-stage {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  /* Mobile portfolio menu type size. */
+  .project-menu {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile project card grid. */
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  /* Mobile project metadata layout. */
+  .project-info {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  /* Mobile project date alignment. */
+  .project-info time {
+    justify-self: start;
+    padding-top: 0;
+  }
+
+  /* Mobile full project page spacing. */
+  .project-page {
+    padding: var(--page-pad-y) var(--page-pad-x);
+  }
+
+  /* Mobile full project page header spacing. */
+  .project-page > .site-header {
+    margin-bottom: 3rem;
+  }
+
+  /* Mobile full project page layout gap. */
+  .project-detail {
+    gap: 2rem;
+  }
+
+  /* Mobile main project image height. */
+  .project-main-image {
+    min-height: 21rem;
+  }
+
+  /* Mobile project title size. */
+  .project-copy h1 {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+  }
+
+  /* Mobile project body text size. */
+  .project-copy p:not(.project-subtitle),
+  .project-tools {
+    font-size: 0.95rem;
+  }
+
+  /* Mobile contact page spacing. */
+  .contact-page {
+    padding: var(--page-pad-y) var(--page-pad-x);
+  }
+
+  /* Mobile contact page stage height. */
+  .contact-stage {
+    min-height: calc(100vh - (var(--page-pad-y) * 2));
+  }
+
+  /* Mobile contact hero layout. */
+  .contact-hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Mobile contact title size and wrapping. */
+  .contact-title {
+    font-size: clamp(5.8rem, 31cqw, 9rem);
+    white-space: normal;
+  }
+
+  /* Mobile contact location/social layout. */
+  .contact-meta {
+    grid-template-columns: 1fr 1fr;
+    justify-self: stretch;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    text-align: right;
+  }
+
+  /* Mobile contact detail text sizing. */
+  .contact-details {
+    gap: 1.5rem;
+    padding-top: 4rem;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+}

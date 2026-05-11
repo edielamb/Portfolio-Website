@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topographic Mapping | Edie Lamb</title>
+    <link rel="stylesheet" href="https://use.typekit.net/nyq5ycv.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="project-page">
+      <!-- Shared site header/navigation on project page. -->
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Edie Lamb home"
+          >Edie Lamb</a
+        >
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <!-- Project template layout for Topographic Mapping page. -->
+      <section class="project-detail" aria-label="Instruction Manual project">
+        <!-- Expandable project category menu on project page. -->
+        <details class="project-menu" aria-label="Project navigation" open>
+          <summary class="project-menu-toggle">Portfolio +</summary>
+          <div class="project-menu-content">
+            <details open>
+              <summary>Visual Design +</summary>
+              <ul>
+                <li><a href="project1.html">Topographic Mapping</a></li>
+                <li><a href="mixedmedia.html">Mixed Media</a></li>
+                <!--
+                  <li><a href="#project-one">Motion Design</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Typography +</summary>
+              <ul>
+                <li><a href="subversitype.html">Subversitype</a></li>
+                <!--
+                  <li><a href="#project-two">Inscript</a></li> -->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Printed Matter +</summary>
+              <ul>
+                <li>
+                  <a href="instructionmanual.html">Instruction Manual Book</a>
+                </li>
+
+                <!-- <li><a href="#project-one">Observations Book</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Photography +</summary>
+              <ul>
+                <li><a href="#project-one">*Under Construction*</a></li>
+                <!-- <li><a href="#project-two">Digital</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Installations +</summary>
+              <ul>
+                <li><a href="rebirth.html">Rebirth</a></li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <!-- Main image viewer and thumbnail carousel on project page. -->
+        <section class="project-viewer" aria-label="Project image viewer">
+          <div
+            class="project-main-image project-image project-image-main"
+            data-project-main-image
+            role="img"
+            aria-label="Selected project image"
+          ></div>
+
+          <div class="project-thumbnails" aria-label="Project thumbnails">
+            <button
+              class="project-thumbnail is-active project-image project-image-main"
+              type="button"
+              data-image-class="project-image-main"
+              aria-label="Show Topographic Mapping brochure"
+              aria-pressed="true"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-sketch-one"
+              type="button"
+              data-image-class="project-image-sketch-one"
+              aria-label="Show map sketches 1"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-sketch-two"
+              type="button"
+              data-image-class="project-image-sketch-two"
+              aria-label="Show map sketches 2"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-sketch-three"
+              type="button"
+              data-image-class="project-image-sketch-three"
+              aria-label="Show map sketches 3"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-gallery"
+              type="button"
+              data-image-class="project-image-gallery"
+              aria-label="Show topographic mapping gallery"
+              aria-pressed="false"
+            ></button>
+          </div>
+        </section>
+
+        <!-- Project title, description, and tools on project page. -->
+        <section class="project-copy" aria-labelledby="project-title">
+          <h1 id="project-title">Topographic Mapping</h1>
+          <p class="project-subtitle">
+            Graphic Design Research Project Proposal<br />November 2025
+          </p>
+
+          <p>
+            The city of Toronto lacks accessible topographic maps that
+            communicate elevation and terrain for people with visual or mobility
+            issues. This project proposes a new standard mapping system for the
+            city of Toronto. 3D, tactile design methods like raised surfaces,
+            textures, or layered printing would help people better understand
+            the topography of Toronto, communicating elevation and terrain
+            better than 2D or digital systems.
+          </p>
+
+          <p>
+            This project consisted of creating 3D models of Toronto's terrain in
+            Adobe Illustrator using real topographic data from the Ontario
+            Government. Streets and transit routes were overlayed onto the 3D
+            map to visualize navigation with the added topographic visuals. A
+            tri-fold brochure acts as the project proposal: introducing the
+            problem, flaws in the current system, and proposes the new standard
+            mapping system with 3D map models. <br />
+            <br />
+            This project was displayed in the Ada Slaight gallery at OCAD
+            University as part of the Research Methods for Graphic Design
+            exhibit.
+          </p>
+
+          <div class="project-tools">
+            <h2>Tools Used:</h2>
+            <ul>
+              <li>Adobe InDesign</li>
+              <li>Adobe Photoshop</li>
+              <li>Adobe Illustrator</li>
+              <li>Laser Printer &amp; Bookbinding Materials</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+      <!-- Previous/next project footer on project page. -->
+      <footer class="project-footer" aria-label="Project navigation">
+        <a href="subversitype.html" aria-label="Previous project"
+          >← Previous Project</a
+        >
+        <a href="subversitype.html" aria-label="Next project">Next Project →</a>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mixed Media | Edie Lamb</title>
+    <link rel="stylesheet" href="https://use.typekit.net/nyq5ycv.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="project-page">
+      <!-- Shared site header/navigation on project page. -->
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Edie Lamb home"
+          >Edie Lamb</a
+        >
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <!-- Project template layout for Mixed Media page. -->
+      <section class="project-detail" aria-label="Mixed Media project">
+        <!-- Expandable project category menu on project page. -->
+        <details class="project-menu" aria-label="Project navigation" open>
+          <summary class="project-menu-toggle">Portfolio +</summary>
+          <div class="project-menu-content">
+            <details open>
+              <summary>Visual Design +</summary>
+              <ul>
+                <li><a href="project1.html">Topographic Mapping</a></li>
+                <li><a href="mixedmedia.html">Mixed Media</a></li>
+                <!--
+                  <li><a href="#project-one">Motion Design</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Typography +</summary>
+              <ul>
+                <li><a href="subversitype.html">Subversitype</a></li>
+                <!--
+                  <li><a href="#project-two">Inscript</a></li> -->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Printed Matter +</summary>
+              <ul>
+                <li>
+                  <a href="instructionmanual.html">Instruction Manual Book</a>
+                </li>
+
+                <!-- <li><a href="#project-one">Observations Book</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Photography +</summary>
+              <ul>
+                <li><a href="#project-one">*Under Construction*</a></li>
+                <!-- <li><a href="#project-two">Digital</a></li>-->
+              </ul>
+            </details>
+
+            <details open>
+              <summary>Installations +</summary>
+              <ul>
+                <li><a href="rebirth.html">Rebirth</a></li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <!-- Main video player and thumbnail carousel on project page. -->
+        <section class="project-viewer" aria-label="Project video viewer">
+          <div class="project-video-frame" data-project-main-image>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/kQgE63Z3s7k"
+              title="YouTube video player"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="project-thumbnails" aria-label="Project thumbnails">
+            <button
+              class="project-thumbnail is-active project-video-thumb"
+              type="button"
+              data-video-src="https://www.youtube-nocookie.com/embed/kQgE63Z3s7k"
+              aria-label="Show video player"
+              aria-pressed="true"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-video-cover"
+              type="button"
+              data-image-class="project-image-video-cover"
+              aria-label="Video book cover"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-video-page-one"
+              type="button"
+              data-image-class="project-image-video-page-one"
+              aria-label="Video book page 1"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-video-page-two"
+              type="button"
+              data-image-class="project-image-video-page-two"
+              aria-label="Video book page 2"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="project-thumbnail project-image project-image-demo-page"
+              type="button"
+              data-image-class="project-image-demo-page"
+              aria-label="Demo page"
+              aria-pressed="false"
+            ></button>
+          </div>
+        </section>
+
+        <!-- Project title, description, and tools on project page. -->
+        <section class="project-copy" aria-labelledby="project-title">
+          <h1 id="project-title">Why Do You Love Independence?</h1>
+          <p class="project-subtitle">
+            Mixed media interview video with accompanying documentation book.<br />2024
+          </p>
+
+          <p>
+            'Why do you love Independence?' was the question asked to three
+            interviewees. Their answers were recorded and used as the audio
+            track to guide the video. The visual content of the video was made
+            by converting found footage into individual frames. The frames were
+            then printed and manipulated manually using oil pastels, colored
+            pencils, and other analogue materials. Once finished, the frames
+            were scanned at a high resolution and reformatted back into video.
+            The result is a frame-by-frame animation combining digital and
+            analogue elements.
+          </p>
+
+          <p>
+            The accompanying documentation book contains the official interview
+            transcript along with process documentation. The background music
+            was created by artist Vraell, who I reached out to directly to
+            collaborate with me on this project.
+          </p>
+
+          <div class="project-tools">
+            <h2>Tools Used:</h2>
+            <ul>
+              <li>Adobe After Effects</li>
+              <li>Adobe Audition</li>
+              <li>Adobe InDesign</li>
+              <li>Oil Pastels</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+      <!-- Previous/next project footer on project page. -->
+      <footer class="project-footer" aria-label="Project navigation">
+        <a href="subversitype.html" aria-label="Previous project"
+          >← Previous Project</a
+        >
+        <a href="project1.html" aria-label="Next project">Next Project →</a>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
