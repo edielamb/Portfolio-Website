@@ -10,6 +10,27 @@ requestAnimationFrame(() => {
 const revealItems = document.querySelectorAll(".reveal-on-scroll");
 const projectMainImage = document.querySelector("[data-project-main-image]");
 const projectThumbnails = document.querySelectorAll("[data-image-class], [data-video-src]");
+const projectFooter = document.querySelector(".project-footer");
+
+// Previous/next project footer links on project pages.
+if (projectFooter) {
+  const projectOrder = [
+    "project1.html",
+    "subversitype.html",
+    "mixedmedia.html",
+    "rebirth.html",
+    "instructionmanual.html",
+  ];
+  const currentProject = window.location.pathname.split("/").pop();
+  const currentIndex = projectOrder.indexOf(currentProject);
+  const [previousLink, nextLink] = projectFooter.querySelectorAll("a");
+
+  if (currentIndex >= 0 && previousLink && nextLink) {
+    previousLink.href =
+      projectOrder[(currentIndex - 1 + projectOrder.length) % projectOrder.length];
+    nextLink.href = projectOrder[(currentIndex + 1) % projectOrder.length];
+  }
+}
 
 // Scroll reveal function for marked content sections.
 if (revealItems.length) {
